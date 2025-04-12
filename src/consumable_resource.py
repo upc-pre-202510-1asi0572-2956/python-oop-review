@@ -17,4 +17,14 @@ class ConsumableResource(Resource):
         self._remaining_capacity -= 1
         self._is_available = self._remaining_capacity > 0
 
-    """TODO: Complete type definition"""
+    def release(self) -> None:
+        if self._remaining_capacity == 0 and not self._is_available:
+            print(f"Warning: Consumable resource '{self.name}' is depleted and cannot be used without replenishment.")
+        self._is_available = self._remaining_capacity > 0
+
+    def use(self)-> None:
+        print(f" Using consumable resource '{self.name}' (remaining: {self._remaining_capacity}/{self._total_capacity})")
+
+    @property
+    def remaining_capacity(self)-> int:
+        return self._remaining_capacity
