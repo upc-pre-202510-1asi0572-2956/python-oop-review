@@ -15,6 +15,7 @@ class Executable(ABC):
         self._description = description
         self._required_resources_names = required_resources_names
         self._assigned_resources: List[Resource] = []
+        self._duration_in_units = duration_in_units
 
     @property
     def name(self) -> str:
